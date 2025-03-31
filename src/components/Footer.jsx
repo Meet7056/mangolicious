@@ -78,7 +78,7 @@ const Footer = () => {
                 />
             </div>
 
-            <div style={{ position: "absolute", top: 200, right: -50 }}>
+            <div style={{ position: "absolute", top: 200, right: -40 }}>
                 <img
                     src={image6}
                     style={{ maxWidth: 120 }}
