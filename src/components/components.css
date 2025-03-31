@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@100..800&display=swap');
+
+.nav-link {
+    color: gray;
+    font-size: 14px;
+}
+
+.nav-link:hover {
+    color: #DC752A;
+}
+
+.nav-link-active {
+    color: #DC752A;
+}
+
+.custom-button {
+    background: #EEA46E;
+    border-radius: 100px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0px 20px;
+    transition: all ease-in-out 0.3s;
+}
+
+.custom-button p {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 1px;
+}
+
+.custom-button:hover {
+    background: #DC752A;
+}
+
+.footer-container {
+    background: #EBD6AA;
+    position: relative;
+    padding: 40px 30px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer-slogan p{
+    font-size: 40px;
+    color: #DC752A;
+    font-family: "Anek Gujarati", sans-serif;
+    width: 100%;
+    text-align: center;
+}
