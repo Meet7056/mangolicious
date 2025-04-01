@@ -48,10 +48,142 @@
     overflow: hidden;
 }
 
-.footer-slogan p{
+.footer-slogan {
+    z-index: 99;
+}
+
+.footer-slogan p {
     font-size: 40px;
     color: #DC752A;
     font-family: "Anek Gujarati", sans-serif;
     width: 100%;
     text-align: center;
+}
+
+/* Sidebar Container */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background: #EBD6AA;
+    color: black;
+    padding: 20px;
+    box-shadow: 5px 0 15px #eea46e29;
+    z-index: 1000;
+}
+
+/* Close Button */
+.close-btn {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+/* Menu Button */
+.menu-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+/* Menu Items */
+.menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 50px;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.menu li a {
+    color: black;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.menu li:hover {
+    background: #DC752A;
+    color: white;
+}
+
+.menu li:hover a {
+    color: white;
+}
+
+/* Logout Button */
+.logout {
+    color: #DC752A;
+}
+
+/* Backdrop */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 900;
+}
+
+.navbar-tabs-container {
+    display: flex;
+}
+
+.mobile-screen-navbar-buttons {
+    display: none;
+}
+
+.video-container {
+    width: calc(100vw - 200px);
+}
+
+@media (max-width: 740px) {
+    .navbar-tabs-container {
+        display: none;
+    }
+
+    .window-screen-navbar-buttons {
+        display: none;
+    }
+
+    .mobile-screen-navbar-buttons {
+        display: block;
+    }
+
+    .video-container {
+        width: 85vw;
+    }
+
+    .products-items-container{
+        padding: 50px 0px;
+    }
+    
+    .footer-slogan {
+        padding: 0px 40px;
+    }
+
+    .footer-container {
+        padding: 40px 30px 0px 30px;
+    }
 }

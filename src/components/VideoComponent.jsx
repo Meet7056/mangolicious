@@ -13,9 +13,9 @@ export default function VideoPlayer() {
             {!playVideo ? (
                 <div style={{ position: "relative", cursor: "pointer" }} onClick={() => setPlayVideo(true)}>
                     <img
-                        style={{ maxWidth: "calc(100vw - 200px)", width: "100%" }}
                         src={thumb}
                         alt="Video Thumbnail"
+                        className="video-container"
                     />
 
                     {/* Play Button Overlay */}
@@ -25,13 +25,13 @@ export default function VideoPlayer() {
                 </div>
             ) : (
                 // Show Video When Playing
-                <div className="h-100">
+                <div className="h-100 video-container">
                     <ReactPlayer
                         url={video}
                         playing={true}
                         controls={true}
                         loop={false}
-                        width="calc(100vw - 200px)"
+                        width="100%"
                         height="auto"
                         muted={true}
                     />

@@ -98,7 +98,7 @@ const Footer = () => {
             <div className='d-flex flex-wrap justify-content-between gap-3 pt-5 pb-3 mt-3' style={{ borderTop: "1px solid rgb(238 164 110)" }}>
                 {
                     allSections.map((item) => (
-                        <div className='d-flex flex-column gap-3'>
+                        <div className='d-flex flex-column gap-3 mb-5'>
                             <h4 style={{ color: "#DC752A" }} className='mb-3'>{item.title}</h4>
                             {
                                 item.subsection.map((subItem) => (

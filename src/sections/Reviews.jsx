@@ -133,14 +133,14 @@ const Reviews = () => {
                     </Swiper>
                 </div>
 
-                <div style={{ position: 'absolute', right: 0, top: 30 }}>
+                <div className='review-image' style={{ position: 'absolute', right: 0, top: 30 }}>
                     <img
                         style={{ maxWidth: 150 }}
                         src={image4}
                     />
                 </div>
 
-                <div style={{ position: 'absolute', left: 0, bottom: 30 }}>
+                <div className='review-image' style={{ position: 'absolute', left: 0, bottom: 30 }}>
                     <img
                         style={{ maxWidth: 150, transform: "scaleX(-1)" }}
                         src={image4}

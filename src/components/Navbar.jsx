@@ -5,6 +5,7 @@ import CustomButton from './CustomButton';
 import bag from "../assets/icons/bag.svg";
 import userImg from "../assets/icons/user.svg";
 import CustomizedMenus from './PopupMenu';
+import Sidebar from './Sidebar';
 
 const links = [
   { link: "/", name: "HOME" },
@@ -29,7 +30,7 @@ const Navbar = () => {
       </div>
 
       {/* tabs */}
-      <div className='d-flex gap-4 px-3'>
+      <div className='gap-4 px-3 navbar-tabs-container'>
         {
           links.map((item) => (
             <Link to={item.link} key={item.link}>
@@ -43,8 +44,15 @@ const Navbar = () => {
 
       {/* button */}
       <div className='d-flex gap-2'>
-        <CustomButton label="ORDER NOW" icon={bag} />
-        <CustomizedMenus icon={userImg} />
+        <div className='window-screen-navbar-buttons'>
+          <CustomButton label="ORDER NOW" icon={bag} />
+        </div>
+        <div className='window-screen-navbar-buttons'>
+          <CustomizedMenus icon={userImg} />
+        </div>
+        <div className='mobile-screen-navbar-buttons'>
+          <Sidebar />
+        </div>
       </div>
 
     </div>

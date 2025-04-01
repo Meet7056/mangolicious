@@ -14,6 +14,7 @@ import Reviews from '../sections/Reviews';
 import VideoSection from '../sections/VideoSection';
 import Specialities from '../sections/Specialities';
 import Footer from '../components/Footer';
+import { motion } from "framer-motion";
 
 const Home = () => {
   return (
@@ -21,29 +22,42 @@ const Home = () => {
       <Navbar />
 
       <div id='page-1'>
-        <div className='d-flex'>
-          <div className='home-container-1'>
-            <div className='w-100 pt-5'>
+        <div className='d-flex' >
+          <div className="home-container-1">
+            <motion.div
+              className='w-100 pt-5'
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            >
               <h1 className='yeseva' style={{ fontSize: "50px" }}>
                 Farm-Fresh <span style={{ color: "#DC752A" }}>Mangoes,</span> Bursting with Flavor!
               </h1>
               <h1 className='yeseva mt-3' style={{ fontSize: "35px", color: "#0F8323" }}>
                 <span style={{ color: "#DC752A" }}>100%</span> Natural
               </h1>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            >
               <img
                 src={image1}
                 style={{ maxHeight: 150 }}
               />
-            </div>
+            </motion.div>
           </div>
-          <div className='home-container-2'>
+          <div className="home-container-2">
             <div className='image-2-cotainer'>
-              <img
+              <motion.img
                 src={image2}
                 style={{ width: "100%", height: "100%", maxWidth: "calc(100vh - 80px)" }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.5, duration: 1 }}
+                alt="Mango Farm"
               />
             </div>
           </div>
@@ -74,8 +88,8 @@ const Home = () => {
       <div id='page-7'>
         <Footer />
       </div>
-      
-    </div>
+
+    </div >
   )
 }
 

@@ -4,7 +4,7 @@
     background: #EBD6AA;
     height: 100%;
     display: flex;
-    height: calc(100vh - 72px);
+    min-height: calc(100vh - 72px);
 }
 
 .home-container-1 {
@@ -76,13 +76,13 @@
     justify-content: center;
 }
 
-.journey-story-container{
+.journey-story-container {
     padding: 50px 30px;
     display: flex;
     flex-direction: column;
 }
 
-.journey-circle-highlight{
+.journey-circle-highlight {
     border: 1px dashed #DC752A;
     padding: 6px;
     border-radius: 50px;
@@ -97,14 +97,14 @@
 }
 
 
-.single-journey-story{
+.single-journey-story {
     display: flex;
     justify-content: start;
     align-items: start;
     position: relative;
 }
 
-.journey-image-container{
+.journey-image-container {
     padding: 7px 25px;
     background-image: url("../assets//images/bgImgJourney.svg");
     background-size: cover;
@@ -121,7 +121,7 @@
     position: relative;
 }
 
-.review-items-container{
+.review-items-container {
     width: 100%;
     padding: 50px;
     display: flex;
@@ -131,7 +131,7 @@
     max-width: 1200px;
 }
 
-.review-item{
+.review-item {
     padding: 20px;
     background: white;
     border-radius: 30px;
@@ -154,22 +154,50 @@
 /* Move pagination bullets down */
 .swiper-pagination {
     position: relative !important;
-    margin-top: 30px; /* Adjust the space as needed */
+    margin-top: 30px;
+    /* Adjust the space as needed */
 }
 
 
 /* Change default dot color */
 .swiper-pagination-bullet {
-    background-color: gray !important; /* Change to any color */
+    background-color: gray !important;
+    /* Change to any color */
     opacity: 0.5;
 }
 
 /* Change active dot color */
 .swiper-pagination-bullet-active {
-    background-color: #DC752A !important; /* Your custom color */
+    background-color: #DC752A !important;
+    /* Your custom color */
     opacity: 1;
 }
 
+.journey-devider {
+    display: flex;
+}
+
+@media (max-width: 740px) {
+    .products-items-container{
+        padding: 50px 0px;
+    }
+}
+
+@media (max-width: 800px) {
+    .journey-devider {
+        display: none;
+    }
+
+    .single-journey-story{
+        flex-direction: column;
+        gap: 20px;
+        padding: 50px 0px;
+    }
+
+    .review-image{
+        display: none;
+    }
+}
 
 @media (max-width: 950px) {
     .home-container-2 {
