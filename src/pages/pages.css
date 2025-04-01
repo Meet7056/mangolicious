@@ -11,6 +11,7 @@
     padding: 20px;
     flex-direction: column;
     justify-content: space-between;
+    padding-left: 50px;
 }
 
 .home-container-2 {
@@ -175,6 +176,48 @@
 
 .journey-devider {
     display: flex;
+}
+
+/* aboutus */
+
+.about-us-image-container{
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+}
+
+.about-us-heading-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.single-aboutus-journey-container{
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-abouts-journey-image-container{
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.single-abouts-journey-image-container-inner{
+    padding-top: 40px;
+    padding-left: 70px;
+}
+
+.single-abouts-journey-image-container-inner-right{
+    padding-top: 40px;
+    padding-right: 70px;
 }
 
 @media (max-width: 740px) {
