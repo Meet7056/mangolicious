@@ -7,7 +7,7 @@ const CustomButton = ({
     ...rest
 }) => {
     return (
-        <div {...rest} className='custom-button' style={{ width: !label && 40, padding: !label && 0 }}>
+        <div {...rest} className='custom-button' role='button' style={{ width: !label && 40, padding: !label && 0 }}>
             {
                 label &&
                 <p>{label || "ORDER NOW"}</p>

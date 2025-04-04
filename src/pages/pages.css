@@ -220,9 +220,33 @@
     padding-right: 70px;
 }
 
+.fresh-farm-content-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 40px;
+    align-items: center;
+}
+
+.fresh-farm-map-container{
+    /* height: 300px;
+    flex: 1;
+    width: 400px; */
+}
+
 @media (max-width: 740px) {
     .products-items-container{
         padding: 50px 0px;
+    }
+    .single-aboutus-journey-container{
+        padding: 50px 10px;
+    }
+    .aboutus-image{
+        display: none;
+    }
+
+    .fresh-farm-map-container{
+        display: none;
     }
 }
 
@@ -245,5 +269,9 @@
 @media (max-width: 950px) {
     .home-container-2 {
         display: none;
+    }
+    .about-us-heading{
+        justify-content: center !important;
+        padding: 40px;
     }
 }

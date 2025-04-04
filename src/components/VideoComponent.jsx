@@ -16,6 +16,7 @@ export default function VideoPlayer() {
                         src={thumb}
                         alt="Video Thumbnail"
                         className="video-container"
+                        style={{opacity: 0.7}}
                     />
 
                     {/* Play Button Overlay */}

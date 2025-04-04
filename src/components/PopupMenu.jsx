@@ -7,6 +7,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import CustomButton from './CustomButton';
 import { AccountCircleOutlined } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -67,10 +68,12 @@ export default function CustomizedMenus({ icon }) {
                 open={open}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose} disableRipple>
-                    <AccountCircleOutlined />
-                    Profile
-                </MenuItem>
+                <Link to={"/profile"}>
+                    <MenuItem sx={{ color: "gray" }} onClick={handleClose} disableRipple>
+                        <AccountCircleOutlined />
+                        Profile
+                    </MenuItem>
+                </Link>
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem onClick={handleClose} disableRipple sx={{ color: '#DC752A' }}>
                     <ExitToAppIcon />
