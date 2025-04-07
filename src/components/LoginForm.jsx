@@ -16,6 +16,8 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import CustomInput from './CustomInput';
 import CustomTextarea from './CustomTextarea';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const StarRating = ({ rating }) => {
     const totalStars = 5;
@@ -30,6 +32,9 @@ const StarRating = ({ rating }) => {
 
 const LoginForm = () => {
 
+    const navigate = useNavigate();
+
+    const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
         message: "",
         name: "",
@@ -45,7 +50,14 @@ const LoginForm = () => {
     };
 
     const handleSubmit = () => {
-        console.log({ formData })
+        setLoading(true)
+        localStorage.setItem("token", "usertoken");
+        toast.success("Logged in successfully!")
+
+        setTimeout(() => {
+            navigate("/profile");
+            setLoading(false)
+        }, 2000);
     }
 
 
@@ -69,7 +81,7 @@ const LoginForm = () => {
                     <form onSubmit={handleSubmit}>
                         <div style={{ maxWidth: 400, justifyContent: "center", display: "flex", flexDirection: "column" }}>
 
-                            <div className='d-flex flex-column gap-3'>
+                            <div className='d-flex flex-column gap-3' style={{minWidth: 400}}>
                                 <CustomInput
                                     label="Your Phone"
                                     name="phone"
@@ -91,7 +103,7 @@ const LoginForm = () => {
                             </div>
 
                             <div className="d-flex mt-5 justify-content-center">
-                                <CustomButton label={"SUBMIT"} role="button" onClick={handleSubmit} type={'submit'} icon={snendImg} />
+                                <CustomButton loading={loading} label={"SUBMIT"} role="button" onClick={handleSubmit} type={'submit'} icon={snendImg} />
                             </div>
                         </div>
                     </form>

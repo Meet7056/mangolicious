@@ -180,20 +180,20 @@
 
 /* aboutus */
 
-.about-us-image-container{
+.about-us-image-container {
     position: relative;
     max-width: 400px;
     width: 100%;
 }
 
-.about-us-heading-container{
+.about-us-heading-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
     max-width: 500px;
 }
 
-.single-aboutus-journey-container{
+.single-aboutus-journey-container {
     padding: 50px;
     display: flex;
     flex-wrap: wrap;
@@ -202,7 +202,7 @@
     align-items: center;
 }
 
-.single-abouts-journey-image-container{
+.single-abouts-journey-image-container {
     width: 100%;
     flex: 1;
     display: flex;
@@ -210,17 +210,17 @@
     max-width: 600px;
 }
 
-.single-abouts-journey-image-container-inner{
+.single-abouts-journey-image-container-inner {
     padding-top: 40px;
     padding-left: 70px;
 }
 
-.single-abouts-journey-image-container-inner-right{
+.single-abouts-journey-image-container-inner-right {
     padding-top: 40px;
     padding-right: 70px;
 }
 
-.fresh-farm-content-container{
+.fresh-farm-content-container {
     display: flex;
     justify-content: space-between;
     gap: 60px;
@@ -228,24 +228,99 @@
     align-items: center;
 }
 
-.fresh-farm-map-container{
+.fresh-farm-map-container {
     /* height: 300px;
     flex: 1;
     width: 400px; */
 }
 
+/* profile */
+
+.profile-page-container {
+    padding: 30px;
+    background: #EEE9DF;
+    display: flex;
+}
+
+.profile-sidebar-container {
+    padding: 20px;
+    border-radius: 20px;
+    background: white;
+    width: 300px;
+    height: calc(100vh - 132px);
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-content-container {
+    /* height: calc(100vh - 132px) !important; */
+    /* overflow-y: scroll; */
+    display: flex;
+    padding: 10px 0px 10px 30px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-single-menu-option {
+    padding: 10px 15px;
+    border-radius: 12px;
+    color: gray;
+    transition: all ease-in-out 0.3s;
+}
+
+.profile-single-menu-option:hover,
+.active-profile-single-menu-option {
+    background: #EEE9DF;
+    color: #DC752A;
+    font-weight: 600;
+}
+
+.container-profile-detail-form {
+    padding: 20px;
+    border-radius: 20px;
+    min-width: 300px;
+    background: white;
+}
+
+.container-change-password-form {
+    padding: 20px;
+    border-radius: 20px;
+    min-width: 300px;
+    background: white;
+}
+
+.small-profile-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #EEA46E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+}
+
+.small-profile-button:hover {
+    background: #DC752A;
+}
+
+
 @media (max-width: 740px) {
-    .products-items-container{
+    .products-items-container {
         padding: 50px 0px;
     }
-    .single-aboutus-journey-container{
+
+    .single-aboutus-journey-container {
         padding: 50px 10px;
     }
-    .aboutus-image{
+
+    .aboutus-image {
         display: none;
     }
 
-    .fresh-farm-map-container{
+    .fresh-farm-map-container {
         display: none;
     }
 }
@@ -255,13 +330,13 @@
         display: none;
     }
 
-    .single-journey-story{
+    .single-journey-story {
         flex-direction: column;
         gap: 20px;
         padding: 50px 0px;
     }
 
-    .review-image{
+    .review-image {
         display: none;
     }
 }
@@ -270,7 +345,8 @@
     .home-container-2 {
         display: none;
     }
-    .about-us-heading{
+
+    .about-us-heading {
         justify-content: center !important;
         padding: 40px;
     }

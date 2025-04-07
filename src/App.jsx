@@ -14,6 +14,9 @@ import "./pages/pages.css";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+import { Toaster } from "react-hot-toast";
+import OrderHistory from "./pages/OrderHistory";
+import Orders from "./pages/Orders";
 
 const Notfound = () => {
   const navigate = useNavigate();
@@ -51,10 +54,14 @@ function AnimatedRoutes() {
             <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
             <Route path="/signup" element={<PageWrapper><Signup /></PageWrapper>} />
             <Route path="/profile" element={<PageWrapper><Profile /></PageWrapper>} />
+            <Route path="/order-history" element={<PageWrapper><OrderHistory /></PageWrapper>} />
+            <Route path="/orders" element={<PageWrapper><Orders /></PageWrapper>} />
             <Route path="*" element={<Notfound />} />
           </Routes>
         </AnimatePresence>
       </div>
+
+      <Toaster />
     </Scrollbar>
   );
 }

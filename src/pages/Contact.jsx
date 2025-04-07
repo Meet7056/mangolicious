@@ -56,7 +56,7 @@ const Contact = () => {
               </p>
 
               <div className="d-flex mt-5">
-                <Link to={"/contact"}>
+                <Link to={"/login"}>
                   <CustomButton label={"LOGIN NOW"} icon={rightarrow} />
                 </Link>
               </div>

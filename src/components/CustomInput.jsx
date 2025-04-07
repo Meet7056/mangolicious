@@ -12,6 +12,7 @@ const CustomInput = ({
   name,
   link,
   notewithlink,
+  inputBgColor,
   ...rest
 }) => {
   return (
@@ -23,7 +24,7 @@ const CustomInput = ({
           onChange={onChange}
           placeholder={placeholder}
           className={`custom-input opensans`}
-          style={{ width: fullWidth ? "100%" : "auto" }}
+          style={{ width: fullWidth ? "100%" : "auto", backgroundColor: inputBgColor && inputBgColor }}
           name={name}
           {...rest}
         />
