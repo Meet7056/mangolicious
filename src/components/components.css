@@ -115,7 +115,7 @@
     transition: 0.3s;
 }
 
-.menu li a {
+.menu li{
     color: black;
     font-size: 16px;
     transition: 0.3s;
@@ -185,6 +185,10 @@
     box-shadow: 0 0 5px rgba(220, 117, 42, 0.5);
 }
 
+.login-form-fields-container{
+    min-width: 400px;
+}
+
 @media (max-width: 740px) {
     .navbar-tabs-container {
         display: none;
@@ -215,6 +219,10 @@
     }
 
     .custom-input-container {
-        min-width: 300px;
+        min-width: 280px;
+    }
+
+    .login-form-fields-container{
+        min-width: 200px;
     }
 }

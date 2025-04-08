@@ -18,6 +18,10 @@
     position: relative;
 }
 
+.home-page-heading{
+    font-size: 50px;
+}
+
 .image-2-cotainer {
     bottom: 0;
     position: absolute;
@@ -242,6 +246,10 @@
     display: flex;
 }
 
+.profile-page-container-scrollbar{
+    height: calc(100vh - 132px) !important;
+}
+
 .profile-sidebar-container {
     padding: 20px;
     border-radius: 20px;
@@ -291,8 +299,8 @@
 }
 
 .small-profile-button {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background-color: #EEA46E;
     display: flex;
@@ -312,6 +320,10 @@
         padding: 50px 0px;
     }
 
+    .home-page-heading{
+        font-size: 40px;
+    }
+
     .single-aboutus-journey-container {
         padding: 50px 10px;
     }
@@ -322,6 +334,22 @@
 
     .fresh-farm-map-container {
         display: none;
+    }
+
+    .profile-sidebar-container{
+        display: none;
+    }
+
+    .profile-content-container {
+        padding: 20px;
+    }
+
+    .profile-page-container {
+        padding: 0px;
+    }
+
+    .profile-page-container-scrollbar{
+        height: calc(100vh - 72px) !important;
     }
 }
 

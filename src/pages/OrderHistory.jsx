@@ -90,7 +90,7 @@ const OrderHistory = () => {
                 </div>
 
 
-                <Scrollbar style={{ height: "calc(100vh - 132px)" }} >
+                <Scrollbar className='profile-page-container-scrollbar' >
                     <div className='profile-content-container'>
                         <div>
                             <h4 className='yeseva text-dark mb-2'>Order History</h4>
@@ -121,7 +121,7 @@ const OrderHistory = () => {
                                             <div className='d-flex flex-column align-items-end'>
                                                 <h4 className='yeseva text-dark mb-2'>₹ 1400</h4>
 
-                                                <p style={{ fontSize: 12 }} className='text-secondary'>
+                                                <p style={{ fontSize: 12, textAlign:'end' }} className='text-secondary'>
                                                     10-03-2025 10:10:10
                                                 </p>
                                             </div>

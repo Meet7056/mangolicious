@@ -69,7 +69,7 @@ const SignupForm = () => {
                     <form onSubmit={handleSubmit}>
                         <div style={{ maxWidth: 400, justifyContent: "center", display: "flex", flexDirection: "column" }}>
 
-                            <div className='d-flex flex-column gap-3' style={{minWidth: 400}}>
+                            <div className='d-flex flex-column gap-3 login-form-fields-container'>
                                 <CustomInput
                                     label="Your name"
                                     name="name"

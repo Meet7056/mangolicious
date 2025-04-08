@@ -91,7 +91,7 @@ const Orders = () => {
                 </div>
 
 
-                <Scrollbar style={{ height: "calc(100vh - 132px)" }} >
+                <Scrollbar className='profile-page-container-scrollbar' >
                     <div className='profile-content-container'>
                         <div>
                             <h4 className='yeseva text-dark mb-2'>Your Orders</h4>
@@ -116,16 +116,16 @@ const Orders = () => {
                                             </div>
                                             <div className='d-flex flex-column align-items-end justify-content-between'>
 
-                                                <p style={{ fontSize: 12 }} className='text-secondary'>
+                                                <p style={{ fontSize: 14 }} className='text-secondary'>
                                                     3 Boxes
                                                 </p>
 
                                                 <div className='d-flex gap-2'>
                                                     <div className='small-profile-button'>
-                                                        <Add />
+                                                        <Add style={{ fontSize: 16 }} />
                                                     </div>
                                                     <div className='small-profile-button'>
-                                                        <Remove />
+                                                        <Remove style={{ fontSize: 16 }} />
                                                     </div>
                                                 </div>
                                             </div>

@@ -44,8 +44,8 @@ function AnimatedRoutes() {
 
   return (
     <Scrollbar style={{ width: "100vw", height: "100vh" }}>
-      <div className="application-container" >
-        <AnimatePresence mode="wait">
+      <div className="application-container h-100" >
+        <AnimatePresence mode="wait" className="h-100">
           <Routes location={location} key={location.pathname}>
             <Route path="/home" element={<PageWrapper><Home /></PageWrapper>} />
             <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />

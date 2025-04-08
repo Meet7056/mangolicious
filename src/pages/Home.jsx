@@ -30,7 +30,7 @@ const Home = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
             >
-              <h1 className='yeseva' style={{ fontSize: "50px" }}>
+              <h1 className='yeseva home-page-heading'>
                 Farm-Fresh <span style={{ color: "#DC752A" }}>Mangoes,</span> Bursting with Flavor!
               </h1>
               <h1 className='yeseva mt-3' style={{ fontSize: "35px", color: "#0F8323" }}>

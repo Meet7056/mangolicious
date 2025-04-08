@@ -89,7 +89,7 @@ const Login = () => {
                 </div>
 
 
-                <Scrollbar style={{ height: "calc(100vh - 132px)" }} >
+                <Scrollbar className='profile-page-container-scrollbar' >
                     <div className='profile-content-container'>
                         <div>
                             <h4 className='yeseva text-dark mb-2'>Celia Almeda</h4>
