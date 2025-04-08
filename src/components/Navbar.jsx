@@ -6,6 +6,8 @@ import bag from "../assets/icons/bag.svg";
 import userImg from "../assets/icons/user.svg";
 import CustomizedMenus from './PopupMenu';
 import Sidebar from './Sidebar';
+import Badge from '@mui/material/Badge';
+import { useProducts } from '../context/ProductContext';
 
 const links = [
   { link: "/", name: "HOME" },
@@ -17,6 +19,8 @@ const links = [
 const Navbar = () => {
 
   const location = useLocation();
+
+  const { addProduct, removeProduct, products } = useProducts();
 
   return (
     <div className='d-flex justify-content-between align-items-center k p-3' style={{ backgroundColor: "#EBD6AA", zIndex: 99 }}>
@@ -44,12 +48,45 @@ const Navbar = () => {
 
       {/* button */}
       <div className='d-flex gap-2'>
-        <div className='window-screen-navbar-buttons'>
-          <CustomButton label="ORDER NOW" icon={bag} />
-        </div>
+        <Link to={"/orders"}>
+          <div className='window-screen-navbar-buttons'>
+            <Badge
+              badgeContent={products.length}
+              color="error"
+              overlap="circular"
+              sx={{
+                "& .MuiBadge-badge": {
+                  backgroundColor: "#fff",
+                  color: "#EEA46E",
+                },
+              }}
+            >
+              <CustomButton label="ORDER NOW" icon={bag} />
+            </Badge>
+          </div>
+        </Link>
         <div className='window-screen-navbar-buttons'>
           <CustomizedMenus icon={userImg} />
         </div>
+
+
+        <Link to={"/orders"}>
+          <div className='mobile-screen-navbar-buttons'>
+            <Badge
+              badgeContent={products.length}
+              color="error"
+              overlap="circular"
+              sx={{
+                "& .MuiBadge-badge": {
+                  backgroundColor: "#fff",
+                  color: "#EEA46E",
+                },
+              }}
+            >
+              <CustomButton icon={bag} />
+            </Badge>
+          </div>
+        </Link>
         <div className='mobile-screen-navbar-buttons'>
           <Sidebar />
         </div>

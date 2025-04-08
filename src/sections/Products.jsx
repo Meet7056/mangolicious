@@ -1,24 +1,29 @@
-import React from 'react';
-import { motion } from "framer-motion";
+import React, { useRef, useState } from 'react';
 import CustomButton from '../components/CustomButton';
 import cartImg from "../assets/icons/cart.svg";
 import { Grid } from '@mui/material';
 import image3 from "../assets/images/image3.png";
+import { motion, AnimatePresence } from "framer-motion";
+import Navbar from '../components/Navbar';
+import { useProducts } from '../context/ProductContext';
 
 const items = [
     {
+        id: 1,
         image: image3,
         price: 1400,
         title: "Kesar Mangoes",
         desc: "Kesar Mangoes is known as “The Queen of Mangoes”"
     },
     {
+        id: 2,
         image: image3,
         price: 1400,
         title: "Kesar Mangoes",
         desc: "Kesar Mangoes is known as “The Queen of Mangoes”"
     },
     {
+        id: 3,
         image: image3,
         price: 1400,
         title: "Kesar Mangoes",
@@ -26,13 +31,97 @@ const items = [
     },
 ];
 
+const SingleProduct = ({ item, index, handleRemoveFromCart, buttonRef, handleAddToCart, products }) => {
+
+    const isAdded = products.find((product) => item.id === product.id);
+
+    return (
+        <motion.div
+            className='products-item'
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: index * 0.3 }} // Delay for each item
+            viewport={{ once: true, amount: 0.2 }} // Starts animation when 20% is in view
+        >
+            <div className='product-item-image-container'>
+                <img
+                    style={{ maxWidth: 200 }}
+                    src={item.image}
+                    alt={item.title}
+                />
+            </div>
+
+            <div className='price-title-products-item'>
+                <h5 className='yeseva fw-bold' style={{ fontSize: "22px" }}>
+                    {item.price} ₹
+                </h5>
+                <p className='ubuntu' style={{ fontSize: "18px" }}>
+                    {item.title}
+                </p>
+                <p className='opensans text-secondary' style={{ fontSize: "14px" }}>
+                    {item.desc}
+                </p>
+            </div>
+
+            <div style={{ padding: 10 }}>
+                <CustomButton ref={buttonRef} onClick={() => {
+                    if (isAdded) {
+                        handleRemoveFromCart(item)
+                    } else {
+                        handleAddToCart(item)
+                    }
+                }} label={isAdded ? "REMOVE FROM BASKET" : "ADD TO BASKET"} icon={cartImg} />
+            </div>
+        </motion.div>
+
+    )
+}
+
 const Products = () => {
+
+    const buttonRef = useRef(null);
+
+    const [animateCart, setAnimateCart] = useState(false);
+    const [showNav, setShowNav] = useState(false);
+    const [startPos, setStartPos] = useState({ top: 0, left: 0 });
+    const { addProduct, removeProduct, products } = useProducts();
+
+    const handleAddToCart = (item) => {
+        addProduct(item)
+        if (buttonRef.current) {
+            const rect = buttonRef.current.getBoundingClientRect();
+            setStartPos({ top: rect.top, left: rect.left });
+            setAnimateCart(true);
+            setShowNav(true);
+
+            setTimeout(() => {
+                setAnimateCart(false);
+            }, 1000);
+
+            setTimeout(() => {
+                setShowNav(false);
+            }, 1500);
+        }
+    };
+
+    const handleRemoveFromCart = (item) => {
+        removeProduct(item.id);
+        setShowNav(true);
+        setTimeout(() => {
+            setShowNav(false);
+        }, 1500);
+    };
+
     return (
         <div>
-            <div className='products-container'>
+            <div className='products-container p-0' style={{ position: 'relative' }}>
+
+                <div className='products-animated-navbar' style={{ opacity: showNav && 1 }}>
+                    <Navbar />
+                </div>
 
                 {/* Title Animation - Only when in view */}
-                <motion.div 
+                <motion.div
                     className='my-3'
                     initial={{ opacity: 0, y: -50 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -47,43 +136,46 @@ const Products = () => {
                 <div className='products-items-container'>
                     <Grid container spacing={7} className="d-flex justify-content-center">
                         {items.map((item, index) => (
-                            <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-                                <motion.div
-                                    className='products-item'
-                                    initial={{ opacity: 0, y: 50 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.8, delay: index * 0.3 }} // Delay for each item
-                                    viewport={{ once: true, amount: 0.2 }} // Starts animation when 20% is in view
-                                >
-                                    <div className='product-item-image-container'>
-                                        <img
-                                            style={{ maxWidth: 200 }}
-                                            src={item.image}
-                                            alt={item.title}
-                                        />
-                                    </div>
-
-                                    <div className='price-title-products-item'>
-                                        <h5 className='yeseva fw-bold' style={{ fontSize: "22px" }}>
-                                            {item.price} ₹
-                                        </h5>
-                                        <p className='ubuntu' style={{ fontSize: "18px" }}>
-                                            {item.title}
-                                        </p>
-                                        <p className='opensans text-secondary' style={{ fontSize: "14px" }}>
-                                            {item.desc}
-                                        </p>
-                                    </div>
-
-                                    <div style={{ padding: 10 }}>
-                                        <CustomButton label={"ADD TO BASKET"} icon={cartImg} />
-                                    </div>
-                                </motion.div>
+                            <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
+                                <SingleProduct handleRemoveFromCart={handleRemoveFromCart} products={products} handleAddToCart={handleAddToCart} item={item} index={index} buttonRef={buttonRef} />
                             </Grid>
                         ))}
                     </Grid>
                 </div>
             </div>
+
+            <AnimatePresence>
+                {animateCart && (
+                    <motion.img
+                        src={image3}
+                        initial={{
+                            top: startPos.top,
+                            right: startPos.right,
+                            scale: 0,
+                            opacity: 0,
+                            position: "fixed",
+                        }}
+                        animate={{
+                            top: 0,
+                            right: 50,
+                            scale: 1,
+                            opacity: 1,
+                            transition: {
+                                top: { type: "spring", stiffness: 300, damping: 20 },
+                                right: { type: "spring", stiffness: 300, damping: 20 },
+                                scale: { type: "tween", duration: 0.4, ease: "easeOut" },
+                                opacity: { duration: 0.2 }
+                            },
+                        }}
+                        exit={{
+                            scale: 0,
+                            opacity: 0,
+                            transition: { duration: 0.3 }
+                        }}
+                        style={{ width: 100, zIndex: 9999 }}
+                    />
+                )}
+            </AnimatePresence>
         </div>
     );
 };

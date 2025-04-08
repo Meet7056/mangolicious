@@ -70,6 +70,15 @@
     padding-top: 30px;
 }
 
+.products-animated-navbar{
+    opacity: 0;
+    transition: all ease-in-out 500ms;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
+
 
 .journey-container {
     padding: 100px 20px;
@@ -313,6 +322,17 @@
 .small-profile-button:hover {
     background: #DC752A;
 }
+
+.add-to-cart-btn {
+    padding: 8px 16px;
+    background: orange;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+  }
+  
 
 
 @media (max-width: 740px) {
