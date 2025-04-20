@@ -16,6 +16,9 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import CustomInput from './CustomInput';
 import CustomTextarea from './CustomTextarea';
+import { registerUser } from '../global/allApis';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const StarRating = ({ rating }) => {
     const totalStars = 5;
@@ -30,11 +33,13 @@ const StarRating = ({ rating }) => {
 
 const SignupForm = () => {
 
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         message: "",
-        name: "",
+        fullname: "",
         email: "",
     });
+    const [loading, setLoading] = useState(false)
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -44,8 +49,31 @@ const SignupForm = () => {
         }));
     };
 
-    const handleSubmit = () => {
-        console.log({ formData })
+    const handleSubmit = async () => {
+        const { password, fullname, mobile_no } = formData;
+
+        console.log({formData})
+
+        if (!password || !fullname || !mobile_no) {
+            toast.error("All fields are required!");
+            return;
+        }
+
+        try {
+            setLoading(true)
+            const response = await registerUser(formData);
+            if (response.message == "Registered Successfully") {
+                toast.success(response.message);
+                navigate("/login")
+            } else {
+                console.log({response})
+                toast.error("Request failed!")
+            }
+            setLoading(false)
+        } catch (error) {
+            console.error({ error })
+            setLoading(false)
+        }
     }
 
 
@@ -71,16 +99,16 @@ const SignupForm = () => {
 
                             <div className='d-flex flex-column gap-3 login-form-fields-container'>
                                 <CustomInput
-                                    label="Your name"
-                                    name="name"
-                                    value={formData.name}
+                                    label="Your full name"
+                                    name="fullname"
+                                    value={formData.fullname}
                                     onChange={handleInputChange}
-                                    placeholder="Enter Name"
+                                    placeholder="Enter Full Name"
                                 />
                                 <CustomInput
                                     label="Your Phone"
-                                    name="phone"
-                                    value={formData.phone}
+                                    name="mobile_no"
+                                    value={formData.mobile_no}
                                     onChange={handleInputChange}
                                     type="number"
                                     placeholder="Enter Phone number"
@@ -98,7 +126,7 @@ const SignupForm = () => {
                             </div>
 
                             <div className="d-flex mt-5 justify-content-center">
-                                <CustomButton label={"SUBMIT"} role="button" onClick={handleSubmit} type={'submit'} icon={snendImg} />
+                                <CustomButton loading={loading} label={"SUBMIT"} role="button" onClick={handleSubmit} type={'submit'} icon={snendImg} />
                             </div>
                         </div>
                     </form>

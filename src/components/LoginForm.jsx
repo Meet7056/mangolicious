@@ -18,6 +18,7 @@ import CustomInput from './CustomInput';
 import CustomTextarea from './CustomTextarea';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { loginUser } from '../global/allApis';
 
 const StarRating = ({ rating }) => {
     const totalStars = 5;
@@ -49,17 +50,34 @@ const LoginForm = () => {
         }));
     };
 
-    const handleSubmit = () => {
-        setLoading(true)
-        localStorage.setItem("token", "usertoken");
-        toast.success("Logged in successfully!")
+    const handleSubmit = async () => {
+        const { password, mobile_no } = formData;
 
-        setTimeout(() => {
-            navigate("/profile");
+        console.log({ formData })
+
+        if (!password || !mobile_no) {
+            toast.error("All fields are required!");
+            return;
+        }
+
+        try {
+            setLoading(true)
+            const response = await loginUser({...formData, mobileno: formData.mobile_no});
+            if (response.token) {
+                toast.success("Login successfully!");
+                localStorage.setItem("token", response.token)
+                localStorage.setItem("userid", response.userid)
+                navigate("/profile")
+            } else {
+                const data = response.response.data
+                toast.error(data.message || "Request failed!")
+            }
             setLoading(false)
-        }, 2000);
+        } catch (error) {
+            console.error({ error })
+            setLoading(false)
+        }
     }
-
 
     return (
         <div>
@@ -84,8 +102,8 @@ const LoginForm = () => {
                             <div className='d-flex flex-column gap-3 login-form-fields-container'>
                                 <CustomInput
                                     label="Your Phone"
-                                    name="phone"
-                                    value={formData.phone}
+                                    name="mobile_no"
+                                    value={formData.mobile_no}
                                     onChange={handleInputChange}
                                     type="number"
                                     placeholder="Enter Phone number"

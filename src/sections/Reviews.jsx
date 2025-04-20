@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomButton from '../components/CustomButton';
 import cartImg from "../assets/icons/cart.svg";
 import { Grid } from '@mui/material';
@@ -13,6 +13,7 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import { getReviews } from '../global/allApis';
 
 const reviews = [
     {
@@ -59,18 +60,45 @@ const reviews = [
     },
 ];
 
+
 const StarRating = ({ rating }) => {
     const totalStars = 5;
+    // Generate random rating between 3 and 5 if not provided
+    const randomRating = Math.floor(Math.random() * 3) + 3; // 3, 4, or 5
+    const finalRating = rating ?? randomRating;
+
     return (
         <div className="d-flex gap-1" style={{ color: "#DC752A" }}>
             {[...Array(totalStars)].map((_, index) =>
-                index < rating ? <Star key={index} /> : <StarOutline key={index} />
+                index < finalRating ? <Star key={index} /> : <StarOutline key={index} />
             )}
         </div>
     );
 };
 
 const Reviews = () => {
+    const [reviews, setReviews] = useState([]);
+
+    const getData = async () => {
+        const response = await getReviews();
+
+        console.log({ response })
+
+        if (response.reviews) {
+            setReviews(response.reviews)
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, [])
+
+    const truncateText = (text, maxLength) => {
+        if (!text) return '';
+        return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+    };
+
+
     return (
         <div>
             <div className='review-container'>
@@ -97,7 +125,7 @@ const Reviews = () => {
                         autoplay={{
                             delay: 3000, // Time between slide changes (in ms)
                             disableOnInteraction: false, // Keeps autoplay running after user interaction
-                          }}
+                        }}
                     >
                         {reviews.map((item, index) => (
                             <SwiperSlide key={index}>
@@ -108,9 +136,10 @@ const Reviews = () => {
 
                                     <div>
                                         <p style={{ fontStyle: "italic", fontSize: "1rem" }} className="text-secondary opensans">
-                                            {item.review}
+                                            {truncateText(item.message, 100)}
                                         </p>
                                     </div>
+
 
                                     <StarRating rating={item.rating} />
 

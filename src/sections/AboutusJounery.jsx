@@ -28,7 +28,7 @@ const AboutusJounery = () => {
                                 <img src={image11} style={{ maxWidth: 150, borderRadius: 30 }} />
                             </div>
                             <div style={{ position: "relative" }}>
-                                <img src={image10} style={{ maxWidth: 400, width: "100%", borderRadius: 30 }} />
+                                <img src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745128646/IMG-20250418-WA0039_wfiaum.jpg"} style={{ maxWidth: 400, width: "100%", borderRadius: 30 }} />
                             </div>
                         </div>
                     </motion.div>
@@ -60,7 +60,7 @@ const AboutusJounery = () => {
                                 <img src={image11} style={{ maxWidth: 150, borderRadius: 30 }} />
                             </div>
                             <div style={{ position: "relative" }}>
-                                <img src={image10} style={{ maxWidth: 400, width: "100%", borderRadius: 30 }} />
+                                <img src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745128646/IMG-20250418-WA0039_wfiaum.jpg"} style={{ maxWidth: 400, width: "100%", borderRadius: 30 }} />
                             </div>
                         </div>
                     </motion.div>
@@ -78,7 +78,7 @@ const AboutusJounery = () => {
                                 <img src={image11} style={{ maxWidth: 150, borderRadius: 30 }} />
                             </div>
                             <div style={{ position: "relative" }}>
-                                <img src={image10} style={{ maxWidth: 400, width: "100%", borderRadius: 30 }} />
+                                <img src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745128646/IMG-20250418-WA0039_wfiaum.jpg"} style={{ maxWidth: 400, width: "100%", borderRadius: 30 }} />
                             </div>
                         </div>
                     </motion.div>

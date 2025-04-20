@@ -14,9 +14,9 @@ import "./pages/pages.css";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
-import { Toaster } from "react-hot-toast";
 import OrderHistory from "./pages/OrderHistory";
 import Orders from "./pages/Orders";
+import { Toaster } from "react-hot-toast";
 
 const Notfound = () => {
   const navigate = useNavigate();
@@ -72,7 +72,7 @@ const PageWrapper = ({ children }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
     >
       {children}
     </motion.div>

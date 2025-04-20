@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CustomButton from '../components/CustomButton';
 import cartImg from "../assets/icons/cart.svg";
 import { Grid } from '@mui/material';
@@ -6,6 +6,7 @@ import image3 from "../assets/images/image3.png";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from '../components/Navbar';
 import { useProducts } from '../context/ProductContext';
+import { addOrder, viewProducts } from '../global/allApis';
 
 const items = [
     {
@@ -13,27 +14,30 @@ const items = [
         image: image3,
         price: 1400,
         title: "Kesar Mangoes",
-        desc: "Kesar Mangoes is known as “The Queen of Mangoes”"
+        desc: "Kesar Mangoes is known as “The Queen of Mangoes”",
+        quantity: 1
     },
     {
         id: 2,
         image: image3,
         price: 1400,
         title: "Kesar Mangoes",
-        desc: "Kesar Mangoes is known as “The Queen of Mangoes”"
+        desc: "Kesar Mangoes is known as “The Queen of Mangoes”",
+        quantity: 1
     },
     {
         id: 3,
         image: image3,
         price: 1400,
         title: "Kesar Mangoes",
-        desc: "Kesar Mangoes is known as “The Queen of Mangoes”"
+        desc: "Kesar Mangoes is known as “The Queen of Mangoes”",
+        quantity: 1
     },
 ];
 
 const SingleProduct = ({ item, index, handleRemoveFromCart, buttonRef, handleAddToCart, products }) => {
 
-    const isAdded = products.find((product) => item.id === product.id);
+    const isAdded = products.find((product) => item.id === product.mango_id);
 
     return (
         <motion.div
@@ -46,8 +50,8 @@ const SingleProduct = ({ item, index, handleRemoveFromCart, buttonRef, handleAdd
             <div className='product-item-image-container'>
                 <img
                     style={{ maxWidth: 200 }}
-                    src={item.image}
-                    alt={item.title}
+                    src={image3}
+                    alt={"image"}
                 />
             </div>
 
@@ -56,10 +60,10 @@ const SingleProduct = ({ item, index, handleRemoveFromCart, buttonRef, handleAdd
                     {item.price} ₹
                 </h5>
                 <p className='ubuntu' style={{ fontSize: "18px" }}>
-                    {item.title}
+                    {item.type}
                 </p>
                 <p className='opensans text-secondary' style={{ fontSize: "14px" }}>
-                    {item.desc}
+                    {item.desc || "The Queen of Mangoes"}
                 </p>
             </div>
 
@@ -86,7 +90,7 @@ const Products = () => {
     const [startPos, setStartPos] = useState({ top: 0, left: 0 });
     const { addProduct, removeProduct, products } = useProducts();
 
-    const handleAddToCart = (item) => {
+    const handleAddToCart = async (item) => {
         addProduct(item)
         if (buttonRef.current) {
             const rect = buttonRef.current.getBoundingClientRect();
@@ -104,13 +108,31 @@ const Products = () => {
         }
     };
 
+    const [data, setdata] = useState([]);
+
+    const getData = async () => {
+        const response = await viewProducts();
+
+        if (response.data.length > 0) {
+            setdata(response.data);
+        } else {
+            setdata([])
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, [])
+
     const handleRemoveFromCart = (item) => {
-        removeProduct(item.id);
+        removeProduct(item);
         setShowNav(true);
         setTimeout(() => {
             setShowNav(false);
         }, 1500);
     };
+
+    console.log({products, data})
 
     return (
         <div>
@@ -135,7 +157,7 @@ const Products = () => {
 
                 <div className='products-items-container'>
                     <Grid container spacing={7} className="d-flex justify-content-center">
-                        {items.map((item, index) => (
+                        {data.map((item, index) => (
                             <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
                                 <SingleProduct handleRemoveFromCart={handleRemoveFromCart} products={products} handleAddToCart={handleAddToCart} item={item} index={index} buttonRef={buttonRef} />
                             </Grid>

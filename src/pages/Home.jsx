@@ -52,7 +52,7 @@ const Home = () => {
           <div className="home-container-2">
             <div className='image-2-cotainer'>
               <motion.img
-                src={image2}
+                src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745129893/Group_3_msf5y9.png"}
                 style={{ width: "100%", height: "100%", maxWidth: "calc(100vh - 80px)" }}
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}

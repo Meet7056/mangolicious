@@ -6,37 +6,37 @@ import { motion } from "framer-motion";
 const journey = [
     {
         title: "Growing",
-        image: journeyImg,
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
         desc: "Our mangoes are grown in the lush, tropical climate where they receive plenty of sunlight and water, ensuring a rich, sweet flavor."
     },
     {
         title: "Harvesting",
-        image: journeyImg,
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
         desc: "Once perfectly ripe, our expert farmers carefully handpick each mango to ensure only the best quality fruits are selected."
     },
     {
         title: "Sorting & Grading",
-        image: journeyImg,
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
         desc: "The mangoes are sorted based on size, ripeness, and quality to ensure only premium mangoes make it to the next step."
     },
     {
         title: "Cleaning & Packaging",
-        image: journeyImg,
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
         desc: "Each mango is thoroughly cleaned and carefully packed using eco-friendly packaging to maintain freshness and prevent damage."
     },
     {
         title: "Cold Storage",
-        image: journeyImg,
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
         desc: "To preserve their freshness, the mangoes are stored in temperature-controlled environments before being dispatched."
     },
     {
         title: "Transportation",
-        image: journeyImg,
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
         desc: "Our logistics team ensures that the mangoes are transported under optimal conditions, reaching their destination in perfect condition."
     },
     {
         title: "Delivery",
-        image: journeyImg,
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
         desc: "Finally, our mangoes arrive at your doorstep, ready to be enjoyed at peak freshness and flavor!"
     }
 ];
@@ -103,7 +103,7 @@ const MangoJourney = () => {
                                             <div className='journey-image-container' style={{ marginTop: -15 }}>
                                                 <img
                                                     src={item.image}
-                                                    style={{ maxWidth: 250 }}
+                                                    style={{ maxWidth: 250, borderRadius: 20 }}
                                                 />
                                             </div>
                                             <div className='ps-4'>

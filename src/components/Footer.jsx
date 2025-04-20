@@ -10,7 +10,7 @@ const allSections = [
         title: "MANGOLICIOUS",
         subsection: [
             {
-                icon: <Favorite style={{ fontSize: 20, color:"red" }} />,
+                icon: <Favorite style={{ fontSize: 20, color: "red" }} />,
                 label: "This website is built, to provide you most perfect mango services!"
             },
             {
@@ -121,13 +121,15 @@ const Footer = () => {
             </div>
 
             <div className='d-flex justify-content-center mb-3'>
-                <CustomButton label={"ORDER NOW"} />
+                <Link to={"/orders"}>
+                    <CustomButton label={"ORDER NOW"} />
+                </Link>
             </div>
 
             <div className='d-flex flex-wrap justify-content-between gap-3 pt-5 pb-3 mt-3' style={{ borderTop: "1px solid rgb(238 164 110)" }}>
                 {
                     allSections.map((item) => (
-                        <div className='d-flex flex-column gap-3 mb-5' style={{maxWidth: 400}}>
+                        <div className='d-flex flex-column gap-3 mb-5' style={{ maxWidth: 400 }}>
                             <h4 style={{ color: "#DC752A" }} className='mb-3'>{item.title}</h4>
                             {
                                 item.subsection.map((subItem) => (

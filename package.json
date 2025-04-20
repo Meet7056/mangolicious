@@ -17,6 +17,7 @@
     "@mui/styled-engine-sc": "^7.0.1",
     "@react-google-maps/api": "^2.20.6",
     "@vis.gl/react-google-maps": "^1.5.2",
+    "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
     "framer-motion": "^12.6.2",
     "lucide-react": "^0.486.0",

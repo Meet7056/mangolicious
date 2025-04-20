@@ -16,6 +16,8 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import CustomInput from './CustomInput';
 import CustomTextarea from './CustomTextarea';
+import { addReview } from '../global/allApis';
+import toast from 'react-hot-toast';
 
 const StarRating = ({ rating }) => {
     const totalStars = 5;
@@ -33,8 +35,9 @@ const Reviews = () => {
     const [formData, setFormData] = useState({
         message: "",
         name: "",
-        email: "",
+        phone_number: "",
     });
+    const [loading, setLoading] = useState(false)
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -44,8 +47,18 @@ const Reviews = () => {
         }));
     };
 
-    const handleSubmit = () => {
-        console.log({ formData })
+    const handleSubmit = async () => {
+        setLoading(true)
+        const response = await addReview(formData);
+        if (response.message == "Review submitted successfully") {
+            toast.success(response.message);
+            setFormData({
+                message: "",
+                name: "",
+                phone_number: "",
+            })
+        }
+        setLoading(false)
     }
 
 
@@ -60,7 +73,7 @@ const Reviews = () => {
                 </div>
 
                 <div className='fresh-farm-content-container'>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className='w-100' style={{ minWidth: 300 }}>
                         <div style={{ maxWidth: 400, justifyContent: "center", display: "flex", flexDirection: "column" }}>
 
                             <div className='d-flex flex-column gap-3'>
@@ -73,8 +86,8 @@ const Reviews = () => {
                                 />
                                 <CustomInput
                                     label="Your Phone"
-                                    name="phone"
-                                    value={formData.phone}
+                                    name="phone_number"
+                                    value={formData.phone_number}
                                     onChange={handleInputChange}
                                     placeholder="Enter Phone number"
                                 />
@@ -88,13 +101,13 @@ const Reviews = () => {
                             </div>
 
                             <div className="d-flex mt-5">
-                                <CustomButton label={"CONTACT US"} role="button" onClick={handleSubmit} type={'submit'} icon={snendImg} />
+                                <CustomButton label={"SUBMIT"} role="button" onClick={handleSubmit} type={'submit'} loading={loading} icon={snendImg} />
                             </div>
                         </div>
                     </form>
-                    <div className='fresh-farm-map-container'>
+                    <div className='fresh-farm-map-container w-100' style={{ minWidth: 300 }}>
                         <img
-                            src={contactimage}
+                            src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745131075/Group_29_h4mf3b.png"}
                             style={{ maxWidth: 500, width: "100%" }}
                         />
                     </div>

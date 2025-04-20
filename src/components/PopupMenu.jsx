@@ -7,7 +7,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import CustomButton from './CustomButton';
 import { AccountCircleOutlined } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -49,6 +49,8 @@ const StyledMenu = styled((props) => (
 }));
 
 export default function CustomizedMenus({ icon }) {
+    const navigate = useNavigate();
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -57,6 +59,12 @@ export default function CustomizedMenus({ icon }) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleLogout = () => {
+        localStorage.removeItem("token")
+        handleClose();
+        navigate("/login")
+    }
 
     return (
         <div>
@@ -75,7 +83,7 @@ export default function CustomizedMenus({ icon }) {
                     </MenuItem>
                 </Link>
                 <Divider sx={{ my: 0.5 }} />
-                <MenuItem onClick={handleClose} disableRipple sx={{ color: '#DC752A' }}>
+                <MenuItem onClick={handleLogout} disableRipple sx={{ color: '#DC752A' }}>
                     <ExitToAppIcon />
                     Logout
                 </MenuItem>
