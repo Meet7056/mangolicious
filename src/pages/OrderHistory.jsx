@@ -160,7 +160,7 @@ const OrderHistory = () => {
 
                                                                 <div className='d-flex justify-content-between w-100'>
                                                                     <div className='d-flex flex-column'>
-                                                                        <h5 className='yeseva text-dark mb-2'>{subItem.name || "Kesar Mangoes"}</h5>
+                                                                        <h5 className='yeseva text-dark mb-2'>{subItem.mango_name || "Kesar Mangoes"}</h5>
 
                                                                         <p style={{ fontSize: 12 }} className='text-secondary'>
                                                                             {subItem.quantity || 3} Boxes

@@ -132,7 +132,7 @@ const Login = () => {
                                     <h4 className='yeseva text-dark mb-2'>{formData.fullname}</h4>
                                 </div>
                                 <div className='d-flex flex-wrap gap-3 align-items-start'>
-                                    <div className='container-profile-detail-form' style={{ flex: 1, maxWidth: 300 }}>
+                                    <div className='container-profile-detail-form' style={{ flex: 1, maxWidth: 320 }}>
                                         <div className='d-flex flex-column gap-3' >
                                             <div className='d-flex justify-content-center py-2 w-100'>
                                                 <img

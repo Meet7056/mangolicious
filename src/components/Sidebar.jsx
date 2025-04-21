@@ -4,7 +4,7 @@ import { Menu, X, Home, User, Settings, LogOut, ShoppingCart, History, ShoppingB
 import CustomizedMenus from "./PopupMenu";
 import burgerImg from "../assets/icons/burger.svg";
 import CustomButton from "./CustomButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const links = [
     { link: "/home", name: "Home", icon: <Home size={20} /> },
@@ -21,6 +21,15 @@ const Sidebar = () => {
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
+    };
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userid");
+        setIsOpen(false);
+        navigate("/login"); // redirect to login page
     };
 
     return (
@@ -50,6 +59,10 @@ const Sidebar = () => {
                             </li>
                         </Link>
                     ))}
+
+                    <li onClick={handleLogout} style={{ marginTop: "auto", cursor: "pointer", color: "red" }}>
+                        <LogOut size={20} /> Logout
+                    </li>
                 </ul>
             </motion.div>
         </>
