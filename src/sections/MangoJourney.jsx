@@ -11,32 +11,32 @@ const journey = [
     },
     {
         title: "Harvesting",
-        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745252968/Mangolicious/x08eaqmkr1xyn2abhqte.jpg",
         desc: "Once perfectly ripe, our expert farmers carefully handpick each mango to ensure only the best quality fruits are selected."
     },
     {
         title: "Sorting & Grading",
-        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745255207/WhatsApp_Image_2025-04-20_at_8.55.54_PM_1_chzqw1.jpg",
         desc: "The mangoes are sorted based on size, ripeness, and quality to ensure only premium mangoes make it to the next step."
     },
     {
         title: "Cleaning & Packaging",
-        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745255225/WhatsApp_Image_2025-04-20_at_8.55.56_PM_1_tjawwd.jpg",
         desc: "Each mango is thoroughly cleaned and carefully packed using eco-friendly packaging to maintain freshness and prevent damage."
     },
     {
         title: "Cold Storage",
-        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745255221/WhatsApp_Image_2025-04-20_at_8.55.58_PM_mmb9vb.jpg",
         desc: "To preserve their freshness, the mangoes are stored in temperature-controlled environments before being dispatched."
     },
     {
         title: "Transportation",
-        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745255218/WhatsApp_Image_2025-04-20_at_8.56.00_PM_vt6n34.jpg",
         desc: "Our logistics team ensures that the mangoes are transported under optimal conditions, reaching their destination in perfect condition."
     },
     {
         title: "Delivery",
-        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745130434/journey_1_cqdzdz.jpg",
+        image: "https://res.cloudinary.com/dvazdgyjw/image/upload/v1745128653/IMG-20250418-WA0029_pqbrsd.jpg",
         desc: "Finally, our mangoes arrive at your doorstep, ready to be enjoyed at peak freshness and flavor!"
     }
 ];

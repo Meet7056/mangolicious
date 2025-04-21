@@ -37,7 +37,9 @@ const tabs = [
 const PopupComponent = ({ formData, handleSubmit, handleInputChange, loading }) => {
 
     return (
-        <div className='w-100 mt-4 d-flex flex-column gap-3 p-3' >
+        <div className='d-flex align-items-center flex-wrap justify-content-around w-100'>
+            
+        <div style={{minWidth: 340}} className='d-flex flex-column gap-3 p-3 my-5' >
             <CustomInput
                 label="Customer name"
                 name="customer_name"
@@ -67,6 +69,15 @@ const PopupComponent = ({ formData, handleSubmit, handleInputChange, loading }) 
                 <CustomButton loading={loading} icon={bag} onClick={handleSubmit} label="ORDER NOW" />
             </div>
         </div>
+
+        <div className='py-5'>
+            <img
+                src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745259830/Mangolicious/hxgmnz3lisszbzpezmrc.jpg"}
+                style={{minWidth: 300, maxWidth: 300}}
+            />
+        </div>
+
+        </div>
     )
 }
 
@@ -76,23 +87,13 @@ const Orders = () => {
     const { addProduct, removeProduct, products, decreaseQuantity, increaseQuantity, getData } = useProducts();
     const { userData, getUserData, updateUserData } = useUserdata();
 
-    useEffect(() => {
-        getUserData();
-        getData();
-    }, [])
-
-    useEffect(() => {
-        if (!localStorage.getItem("token")) {
-            navigate("/login")
-        }
-    }, [])
-
     const location = useLocation();
 
     const [loading, setLoading] = useState(true)
     const [loadingBtn, setLoadingBtn] = useState(false)
 
     const handleLogout = () => {
+        localStorage.removeItem("userid")
         localStorage.removeItem("token")
         navigate("/login")
     }
@@ -107,7 +108,8 @@ const Orders = () => {
         const response = await placeOrder(formData);
         if (response.message == "Order placed successfully") {
             toast.success("Order placed successfully!")
-            setopen(false)
+            setopen(false);
+            getData();
         }else{
             toast.error(response.message || "Request failed")
         }
@@ -137,6 +139,18 @@ const Orders = () => {
             setLoading(false)
         }, 1000);
     }, []);
+
+
+    useEffect(() => {
+        getUserData();
+        getData();
+    }, [open])
+
+    useEffect(() => {
+        if (!localStorage.getItem("token")) {
+            navigate("/login")
+        }
+    }, [])
 
     return (
         <div>
@@ -258,7 +272,8 @@ const Orders = () => {
 
                         </Scrollbar>
 
-                        <PopupModal open={open}
+                        <PopupModal
+                            open={open}
                             handleClose={() => { setopen(false) }}
                             title="Place Order"
                             content={

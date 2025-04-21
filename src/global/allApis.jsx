@@ -1,4 +1,5 @@
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const API_START_POINT = "https://mangoliciousfood.com/api";
 
@@ -56,6 +57,10 @@ export const addOrder = async (payload) => {
     try {
         const token = localStorage.getItem("token");
         const user_id = localStorage.getItem("userid");
+
+        if (!user_id) {
+            toast.error("Please login to your account!")
+        }
 
         const response = await axios.post(
             `${API_START_POINT}/add_to_cart/`,
@@ -251,19 +256,22 @@ export const addReview = async (payload) => {
     }
 };
 
-export const orderHistory = async () => {
+export const orderHistory = async (payload) => {
     try {
         const user_id = localStorage.getItem("userid"); // assuming you store it in localStorage
         const token = localStorage.getItem("token");
 
-        const response = await axios.get(
+        const response = await axios.post(
             `${API_START_POINT}/order_history/`,
             {
-                params: { user_id }, // Send user_id as query parameter
+                ...payload,
+                user_id: user_id,
+            },
+            {
                 headers: {
                     token,
-                    'Content-Type': 'application/json'
-                }
+                    "Content-Type": "application/json",
+                },
             }
         );
 

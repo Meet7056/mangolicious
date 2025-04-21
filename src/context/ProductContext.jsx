@@ -87,8 +87,10 @@ export const ProductProvider = ({ children }) => {
     );
 
     const current_order = products.filter((item) => item.id == id);
+    // console.log(current_order[0].quantity)
     if (current_order[0].quantity == 1) {
-      removeProduct(id);
+      // removeProduct(current_order);
+      removeOrder({ cart_item_id: current_order[0].id })
     } else {
       const payload = {
         ...current_order[0],

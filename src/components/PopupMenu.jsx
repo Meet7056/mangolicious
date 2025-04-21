@@ -62,6 +62,7 @@ export default function CustomizedMenus({ icon }) {
 
     const handleLogout = () => {
         localStorage.removeItem("token")
+        localStorage.removeItem("userid")
         handleClose();
         navigate("/login")
     }

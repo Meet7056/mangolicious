@@ -12,6 +12,7 @@ import snendImg from "../assets/icons/send.svg";
 import { CircularProgress } from '@mui/material';
 import { useUserdata } from '../context/UserContext';
 import { orderHistory } from '../global/allApis';
+import { Autorenew, CalendarMonthOutlined, LocationOn, Map } from '@mui/icons-material';
 
 const tabs = [
     {
@@ -31,6 +32,8 @@ const tabs = [
 const OrderHistory = () => {
 
     const navigate = useNavigate();
+
+    const [data, setdata] = useState([]);
 
     const { userData, getUserData, updateUserData } = useUserdata();
 
@@ -62,6 +65,7 @@ const OrderHistory = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("token")
+        localStorage.removeItem("userid")
         navigate("/login")
     }
 
@@ -74,7 +78,12 @@ const OrderHistory = () => {
 
     const getData = async () => {
         const response = await orderHistory();
-console.log({response})
+        console.log({ response })
+        if (response.orders) {
+            setdata(response.orders)
+        } else {
+            setdata([])
+        }
     }
 
     useEffect(() => {
@@ -130,41 +139,68 @@ console.log({response})
                                 <div>
                                     <h4 className='yeseva text-dark mb-2'>Order History</h4>
                                 </div>
-                                <div className='d-flex flex-wrap gap-3 align-items-start'>
-                                    <div className='container-profile-detail-form' style={{ flex: 1 }}>
-                                        <div className='d-flex flex-column gap-3' >
-                                            <p style={{ fontSize: 12 }} className='text-secondary'>
-                                                10-03-2025
-                                            </p>
+                                {
+                                    data.map((item, index) => (
+                                        <div key={index} className='d-flex flex-wrap gap-3 align-items-start'>
+                                            <div className='container-profile-detail-form' style={{ flex: 1 }}>
 
-                                            <div className='d-flex gap-3'>
-                                                <div className='d-flex' style={{ borderRadius: 15, border: '1px solid lightgray', height: 50, minWidth: 50, overflow: "hidden" }}>
-                                                    <img
-                                                        src={image14}
-                                                        style={{ height: "50px", width: "50px" }}
-                                                    />
-                                                </div>
+                                                <div className='d-flex flex-column gap-4' >
 
-                                                <div className='d-flex justify-content-between w-100'>
-                                                    <div className='d-flex flex-column'>
-                                                        <h5 className='yeseva text-dark mb-2'>Kesar Mangoes</h5>
 
+                                                    {
+                                                        item.items.map((subItem, subIndex) => (
+
+                                                            <div key={subIndex} className='d-flex gap-3'>
+                                                                <div className='d-flex' style={{ borderRadius: 15, border: '1px solid lightgray', height: 50, minWidth: 50, overflow: "hidden" }}>
+                                                                    <img
+                                                                        src={image14}
+                                                                        style={{ height: "50px", width: "50px" }}
+                                                                    />
+                                                                </div>
+
+                                                                <div className='d-flex justify-content-between w-100'>
+                                                                    <div className='d-flex flex-column'>
+                                                                        <h5 className='yeseva text-dark mb-2'>{subItem.name || "Kesar Mangoes"}</h5>
+
+                                                                        <p style={{ fontSize: 12 }} className='text-secondary'>
+                                                                            {subItem.quantity || 3} Boxes
+                                                                        </p>
+                                                                    </div>
+                                                                    <div className='d-flex flex-column align-items-end'>
+                                                                        <h4 className='yeseva text-dark mb-2'>₹ {subItem.price || 1400}</h4>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        ))
+                                                    }
+
+                                                    <div className='d-flex flex-column gap-1 ps-1'>
+                                                        {
+                                                            item.status == "pending" &&
+                                                            <p style={{ fontSize: 12 }} className='text-warning'>
+                                                                <Autorenew style={{ fontSize: 16 }} /> &nbsp; {item.status}
+                                                            </p>
+                                                        }
+                                                        {
+                                                            item.status == "approved" &&
+                                                            <p style={{ fontSize: 12 }} className='text-success'>
+                                                                <Autorenew style={{ fontSize: 16 }} /> &nbsp; {item.status}
+                                                            </p>
+                                                        }
                                                         <p style={{ fontSize: 12 }} className='text-secondary'>
-                                                            3 Boxes
+                                                            <CalendarMonthOutlined style={{ fontSize: 16 }} /> &nbsp; {item.ordered_at}
                                                         </p>
-                                                    </div>
-                                                    <div className='d-flex flex-column align-items-end'>
-                                                        <h4 className='yeseva text-dark mb-2'>₹ 1400</h4>
-
-                                                        <p style={{ fontSize: 12, textAlign: 'end' }} className='text-secondary'>
-                                                            10-03-2025 10:10:10
+                                                        <p style={{ fontSize: 12 }} className='text-secondary'>
+                                                            <LocationOn style={{ fontSize: 16 }} /> &nbsp; {item.address}
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    ))
+                                }
                             </div>
 
                         </Scrollbar>

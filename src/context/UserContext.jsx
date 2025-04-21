@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { updateProfile, viewProfile } from "../global/allApis";
+import toast from "react-hot-toast";
 
 
 const UserContext = createContext();
@@ -32,6 +33,7 @@ export const UserProvider = ({ children }) => {
 
             if (response.message == "Profile updated successfully") {
                 setUserData(response.updated_data)
+                toast.success(response.message)
             }
         } catch (error) {
             console.log({ error })

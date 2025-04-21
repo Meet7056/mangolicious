@@ -21,7 +21,7 @@ const Home = () => {
     <div style={{ height: '100vh' }} className='bg-dark'>
       <Navbar />
 
-      <div id='page-1'>
+      <div id='page-1' style={{ position: "relative" }}>
         <div className='d-flex' >
           <div className="home-container-1">
             <motion.div
@@ -52,7 +52,7 @@ const Home = () => {
           <div className="home-container-2">
             <div className='image-2-cotainer'>
               <motion.img
-                src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745129893/Group_3_msf5y9.png"}
+                src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745259816/Group_3_fuiyxp.png"}
                 style={{ width: "100%", height: "100%", maxWidth: "calc(100vh - 80px)" }}
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -62,6 +62,10 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        {/* <div style={{ top: 0, left: 0, position:"absolute", width:"100%", backgroundColor:"#eea46e" }} className='d-flex p-3 px-4'>
+          <h5>FLASH SALE</h5>
+        </div> */}
       </div>
 
       <div id='page-2'>

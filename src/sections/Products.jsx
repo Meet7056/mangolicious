@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Navbar from '../components/Navbar';
 import { useProducts } from '../context/ProductContext';
 import { addOrder, viewProducts } from '../global/allApis';
+import toast from 'react-hot-toast';
 
 const items = [
     {
@@ -91,6 +92,15 @@ const Products = () => {
     const { addProduct, removeProduct, products } = useProducts();
 
     const handleAddToCart = async (item) => {
+
+
+        const user_id = localStorage.getItem("userid");
+
+        if (!user_id) {
+            toast.error("Please login to your account!")
+            return;
+        }
+
         addProduct(item)
         if (buttonRef.current) {
             const rect = buttonRef.current.getBoundingClientRect();
