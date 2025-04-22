@@ -17,6 +17,7 @@ import Signup from "./pages/Signup";
 import OrderHistory from "./pages/OrderHistory";
 import Orders from "./pages/Orders";
 import { Toaster } from "react-hot-toast";
+import { useProducts } from "./context/ProductContext";
 
 const Notfound = () => {
   const navigate = useNavigate();
@@ -67,6 +68,14 @@ function AnimatedRoutes() {
 }
 
 const PageWrapper = ({ children }) => {
+
+  const { getData } = useProducts();
+  const location = useLocation();
+
+  useEffect(()=>{
+    getData();
+  },[location.pathname])
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

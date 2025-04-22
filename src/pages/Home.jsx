@@ -15,6 +15,7 @@ import VideoSection from '../sections/VideoSection';
 import Specialities from '../sections/Specialities';
 import Footer from '../components/Footer';
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -38,16 +39,50 @@ const Home = () => {
               </h1>
             </motion.div>
 
-            <motion.div
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 1 }}
-            >
-              <img
-                src={image1}
-                style={{ maxHeight: 150 }}
-              />
-            </motion.div>
+            <Link to={"/home#page-2"}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <div style={{ position: "relative", paddingLeft: 80 }}>
+
+                  <div style={{ position: "relative" }}>
+
+                    <img
+                      src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745338481/24506167046-removebg-preview_tcuxbf.png"}
+                      style={{ maxHeight: 160 }}
+                    />
+
+                    <div style={{ position: 'absolute', top: 63, left: 57 }}>
+                      <h2 className='yeseva text-white' style={{ fontSize: 35 }}>
+                        99%
+                      </h2>
+                    </div>
+                  </div>
+
+
+                  {/* <div style={{ position: "absolute", left: 60, top: -10 }}>
+
+                  <img
+                    src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745338481/24506167046-removebg-preview_tcuxbf.png"}
+                    style={{ maxHeight: 190 }}
+                  />
+                </div> */}
+                  <div style={{ position: "absolute", left: -20, top: -35 }}>
+
+                    <img
+                      src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745337316/lovepik-mango-splashing-png-image_401631333_wh1200-removebg-preview_heutaw.png"}
+                      style={{ maxHeight: 200 }}
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
           </div>
           <div className="home-container-2">
             <div className='image-2-cotainer'>
