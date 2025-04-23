@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/Navbar';
 import image1 from "../assets/images/image.png";
 import image2 from "../assets/images/image2.png";
@@ -18,6 +18,9 @@ import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+
+  const [sale, setSale] = useState(true);
+
   return (
     <div style={{ height: '100vh' }} className='bg-dark'>
       <Navbar />
@@ -49,38 +52,38 @@ const Home = () => {
                   ease: "easeInOut",
                 }}
               >
-                <div style={{ position: "relative", paddingLeft: 80 }}>
+                {
+                  sale ?
+                    <div style={{ position: "relative", paddingLeft: 80 }}>
 
-                  <div style={{ position: "relative" }}>
+                      <div style={{ position: "relative" }}>
 
-                    <img
-                      src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745338481/24506167046-removebg-preview_tcuxbf.png"}
-                      style={{ maxHeight: 160 }}
-                    />
+                        <img
+                          src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745338481/24506167046-removebg-preview_tcuxbf.png"}
+                          style={{ maxHeight: 160 }}
+                        />
 
-                    <div style={{ position: 'absolute', top: 63, left: 57 }}>
-                      <h2 className='yeseva text-white' style={{ fontSize: 35 }}>
-                        99%
-                      </h2>
+                        <div style={{ position: 'absolute', top: 63, left: 57 }}>
+                          <h2 className='yeseva text-white' style={{ fontSize: 35 }}>
+                            99%
+                          </h2>
+                        </div>
+                      </div>
+
+                      <div style={{ position: "absolute", left: -20, top: -35 }}>
+
+                        <img
+                          src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745337316/lovepik-mango-splashing-png-image_401631333_wh1200-removebg-preview_heutaw.png"}
+                          style={{ maxHeight: 200 }}
+                        />
+                      </div>
                     </div>
-                  </div>
-
-
-                  {/* <div style={{ position: "absolute", left: 60, top: -10 }}>
-
-                  <img
-                    src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745338481/24506167046-removebg-preview_tcuxbf.png"}
-                    style={{ maxHeight: 190 }}
-                  />
-                </div> */}
-                  <div style={{ position: "absolute", left: -20, top: -35 }}>
-
+                    :
                     <img
-                      src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745337316/lovepik-mango-splashing-png-image_401631333_wh1200-removebg-preview_heutaw.png"}
-                      style={{ maxHeight: 200 }}
+                      src={image1}
+                      style={{ maxHeight: 150 }}
                     />
-                  </div>
-                </div>
+                }
               </motion.div>
             </Link>
           </div>
