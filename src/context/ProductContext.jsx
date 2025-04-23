@@ -9,6 +9,7 @@ export const useProducts = () => useContext(ProductContext);
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const getData = async () => {
 
@@ -18,6 +19,7 @@ export const ProductProvider = ({ children }) => {
 
       if (response.cart_data) {
         setProducts(response.cart_data)
+        setTotalPrice(response.total_cart_amount)
       }
     } catch (error) {
       console.log({ error })
@@ -26,7 +28,7 @@ export const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [open])
 
   // Add Product
   const addProduct = (product) => {
@@ -111,7 +113,8 @@ export const ProductProvider = ({ children }) => {
         clearProducts,
         increaseQuantity,
         decreaseQuantity,
-        getData
+        getData,
+        totalPrice
       }}
     >
       {children}

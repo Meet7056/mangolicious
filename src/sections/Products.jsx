@@ -8,6 +8,7 @@ import Navbar from '../components/Navbar';
 import { useProducts } from '../context/ProductContext';
 import { addOrder, viewProducts } from '../global/allApis';
 import toast from 'react-hot-toast';
+import locationImg from "../assets/icons/location.svg";
 
 const items = [
     {
@@ -129,10 +130,13 @@ const Products = () => {
             setdata([])
         }
     }
+    const [openModel, setopenModel] = useState();
 
     useEffect(() => {
-        getData();
-    }, [])
+        setTimeout(() => {
+            getData();
+        }, 1000);
+    }, [openModel])
 
     const handleRemoveFromCart = (item) => {
         removeProduct(item);
@@ -142,14 +146,13 @@ const Products = () => {
         }, 1500);
     };
 
-    console.log({products, data})
 
     return (
         <div>
             <div className='products-container p-0' style={{ position: 'relative' }}>
 
                 <div className='products-animated-navbar' style={{ opacity: showNav && 1 }}>
-                    <Navbar />
+                    <Navbar openModel={openModel} getProductsData={getData} setopenModel={setopenModel} />
                 </div>
 
                 {/* Title Animation - Only when in view */}
@@ -172,6 +175,23 @@ const Products = () => {
                                 <SingleProduct handleRemoveFromCart={handleRemoveFromCart} products={products} handleAddToCart={handleAddToCart} item={item} index={index} buttonRef={buttonRef} />
                             </Grid>
                         ))}
+
+                        {
+                            data.length == 0 &&
+                            <div className='py-4 d-flex align-items-center justify-content-center flex-column'>
+                                <h1 className='text-secondary mb-4'>
+                                    Products not found in Your city
+                                </h1>
+
+                                <p className='mb-4'>
+                                    Please select another city to view products..!
+                                </p>
+
+                                <div>
+                                    <CustomButton icon={locationImg} label={"SELECT CITY"} onClick={() => { setopenModel(!openModel) }} />
+                                </div>
+                            </div>
+                        }
                     </Grid>
                 </div>
             </div>

@@ -36,7 +36,7 @@ export const viewProducts = async () => {
         const response = await axios.post(
             `${API_START_POINT}/get_mangoes/`,
             {
-                "city": "Bhavnagar"
+                "city": localStorage.getItem("city") 
             },
             {
                 headers: {

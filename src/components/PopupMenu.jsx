@@ -86,7 +86,11 @@ export default function CustomizedMenus({ icon }) {
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem onClick={handleLogout} disableRipple sx={{ color: '#DC752A' }}>
                     <ExitToAppIcon />
-                    Logout
+                    {
+                        !localStorage.getItem("token") ? 
+                        "Login" :
+                        "Logout"
+                    }
                 </MenuItem>
             </StyledMenu>
         </div>

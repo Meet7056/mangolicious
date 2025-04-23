@@ -189,6 +189,40 @@
     min-width: 400px;
 }
 
+.custom-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .custom-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+  }
+  
+  .custom-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-input {
+    padding: 10px 12px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s ease-in-out;
+    background-color: white;
+  }
+  
+  .custom-input:focus {
+    border-color: #DC752A;
+    box-shadow: 0 0 5px rgba(220, 117, 42, 0.5);
+  }
+  
+
 @media (max-width: 740px) {
     .navbar-tabs-container {
         display: none;
