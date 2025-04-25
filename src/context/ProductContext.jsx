@@ -58,6 +58,13 @@ export const ProductProvider = ({ children }) => {
 
   // Increase Quantity
   const increaseQuantity = (id) => {
+    const current_order = products.filter((item) => item.id == id);
+    const payload = {
+      ...current_order[0],
+      quantity: current_order[0].quantity + 1,
+      mango_id: current_order[0].mango_id
+    }
+    addOrder(payload)
     setProducts((prev) =>
       prev.map((item) =>
         item.id === id
@@ -66,14 +73,7 @@ export const ProductProvider = ({ children }) => {
       )
     );
 
-    const current_order = products.filter((item) => item.id == id);
-    const payload = {
-      ...current_order[0],
-      quantity: current_order[0].quantity + 1,
-      mango_id: current_order[0].mango_id
-    }
 
-    addOrder(payload)
   };
 
   // Decrease Quantity (and remove if 0)

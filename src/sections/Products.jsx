@@ -9,6 +9,7 @@ import { useProducts } from '../context/ProductContext';
 import { addOrder, viewProducts } from '../global/allApis';
 import toast from 'react-hot-toast';
 import locationImg from "../assets/icons/location.svg";
+import { useNavigate } from 'react-router-dom';
 
 const items = [
     {
@@ -91,6 +92,12 @@ const Products = () => {
     const [showNav, setShowNav] = useState(false);
     const [startPos, setStartPos] = useState({ top: 0, left: 0 });
     const { addProduct, removeProduct, products } = useProducts();
+    const [loading, setloading] = useState(true);
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        setloading(false)
+    }, [2000])
 
     const handleAddToCart = async (item) => {
 
@@ -99,6 +106,7 @@ const Products = () => {
 
         if (!user_id) {
             toast.error("Please login to your account!")
+            navigate("/login")
             return;
         }
 
@@ -177,7 +185,7 @@ const Products = () => {
                         ))}
 
                         {
-                            data.length == 0 &&
+                            loading && data.length == 0 &&
                             <div className='py-4 d-flex align-items-center justify-content-center flex-column'>
                                 <h1 className='text-secondary mb-4'>
                                     Products not found in Your city

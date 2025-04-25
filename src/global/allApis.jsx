@@ -59,7 +59,7 @@ export const addOrder = async (payload) => {
         const user_id = localStorage.getItem("userid");
 
         if (!user_id) {
-            toast.error("Please login to your account!")
+            toast.error("Please login to your account!");
         }
 
         const response = await axios.post(

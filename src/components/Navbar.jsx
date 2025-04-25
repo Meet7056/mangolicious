@@ -103,7 +103,7 @@ const PopupComponent = ({ formData, handleSubmit, loading }) => {
   );
 };
 
-const Navbar = ({ openModel, setopenModel, getProductsData }) => {
+const Navbar = ({ openModel, getProductsData }) => {
 
   const location = useLocation();
   const [open, setopen] = useState(false);
@@ -112,15 +112,10 @@ const Navbar = ({ openModel, setopenModel, getProductsData }) => {
   const [openOnce, setopenOnce] = useState(false);
 
   useEffect(() => {
-    if (!localStorage.getItem("city")) {
+    if (openOnce) { 
       setopen(true)
     }
-  }, [])
 
-  useEffect(() => {
-    if (openOnce) {
-      setopen(true)
-    }
     setopenOnce(true)
   }, [openModel])
 
@@ -128,7 +123,7 @@ const Navbar = ({ openModel, setopenModel, getProductsData }) => {
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [open])
 
   const [formData, setFormData] = useState({
     customer_name: "",
@@ -139,8 +134,8 @@ const Navbar = ({ openModel, setopenModel, getProductsData }) => {
 
   const handleSubmit = async () => {
     localStorage.setItem("city", formData.city);
-    setopen(false)
     getProductsData();
+    setopen(false)
   }
 
 
@@ -230,7 +225,7 @@ const Navbar = ({ openModel, setopenModel, getProductsData }) => {
 
       <PopupModal
         open={open}
-        handleClose={() => { setopen(false);  }}
+        handleClose={() => { setopen(false) }}
         title="Select Location"
         maxWidth='400px'
         content={

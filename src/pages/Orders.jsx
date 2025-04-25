@@ -42,6 +42,7 @@ const PopupComponent = ({ formData, handleSubmit, handleInputChange, loading }) 
 
             <div style={{ minWidth: 340 }} className='d-flex flex-column gap-3 p-3 my-5' >
                 <CustomInput
+                    className="custom-input opensans bg-white"
                     label="Customer name"
                     name="customer_name"
                     value={formData.customer_name}
@@ -50,6 +51,7 @@ const PopupComponent = ({ formData, handleSubmit, handleInputChange, loading }) 
                     inputBgColor={"#eee9df"}
                 />
                 <CustomInput
+                    className="custom-input opensans bg-white"
                     label="Your Number"
                     name="phone_number"
                     value={formData.phone_number}
@@ -58,13 +60,17 @@ const PopupComponent = ({ formData, handleSubmit, handleInputChange, loading }) 
                     inputBgColor={"#eee9df"}
                 />
                 <CustomInput
+                    className="custom-input opensans bg-white"
                     label="Your address"
                     name="address"
                     value={formData.address}
                     onChange={handleInputChange}
-                    placeholder="Enter Address"
+                    placeholder="Street no. 6, Talaja, Bhavnagar, India."
                     inputBgColor={"#eee9df"}
+                    notewithlink="Use UPI ID on payment of more than 2000 rs."
                 />
+
+                <p></p>
 
                 <div className='d-flex justify-content-center mt-4'>
                     <CustomButton loading={loading} icon={bag} onClick={handleSubmit} label="ORDER NOW" />

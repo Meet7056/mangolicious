@@ -5,6 +5,7 @@ import { Email, LocationOn, Phone } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import CustomButton from '../components/CustomButton'
 import rightarrow from "../assets/icons/rightarrow.svg"
+import GoogleMapCustomComponent from '../components/googleMap'
 
 const items = {
     title: "MANGOLICIOUS",
@@ -35,13 +36,14 @@ const FreshFarmTitle = () => {
                     </h1>
                 </div>
 
-                <div className='fresh-farm-content-container'>
-                    <div className='fresh-farm-map-container'>
+                <div className='fresh-farm-content-container flex-wrap'>
+                    <div className=''>
                         {/* <GoogleMapComponent /> */}
-                        <img
+                        <GoogleMapCustomComponent />
+                        {/* <img
                             src={image12}
                             style={{ maxWidth: 500, width: "100%" }}
-                        />
+                        /> */}
                     </div>
                     <div style={{ maxWidth: 400, justifyContent: "center", display: "flex", flexDirection: "column" }}>
                         <h3 className='yeseva mb-4' style={{ color: "#DC752A" }}>
