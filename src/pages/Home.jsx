@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar';
 import image1 from "../assets/images/image.png";
 import image2 from "../assets/images/image2.png";
@@ -16,10 +16,27 @@ import Specialities from '../sections/Specialities';
 import Footer from '../components/Footer';
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
+import { getCuurrentSaleAllApi } from '../global/allApis';
 
 const Home = () => {
 
   const [sale, setSale] = useState(true);
+
+  const [currentSale, setCurrentSale] = useState({});
+
+  async function getCurrentSale() {
+    const response = await getCuurrentSaleAllApi();
+
+    if (response.active_flash_sales.length > 0) {
+      setCurrentSale(response.active_flash_sales[0])
+    } else {
+      setCurrentSale({})
+    }
+  }
+
+  useEffect(() => {
+    getCurrentSale()
+  }, [])
 
   return (
     <div style={{ height: '100vh' }} className='bg-dark'>
@@ -42,6 +59,21 @@ const Home = () => {
               </h1>
             </motion.div>
 
+
+            <motion.div
+              className='w-100 pt-5'
+              style={{ marginLeft: -20 }}
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            >
+              <img
+                src={image1}
+                style={{ maxWidth: 230 }}
+              />
+            </motion.div>
+
+            {/*             
             <Link to={"/home#page-2"}>
               <motion.div
                 initial={{ opacity: 0 }}
@@ -85,7 +117,8 @@ const Home = () => {
                     />
                 }
               </motion.div>
-            </Link>
+            </Link> */}
+
           </div>
           <div className="home-container-2">
             <div className='image-2-cotainer'>
@@ -105,6 +138,38 @@ const Home = () => {
           <h5>FLASH SALE</h5>
         </div> */}
       </div>
+
+      {
+        currentSale.id &&
+        <div style={{ height: 120, display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "#EEA46E" }} className='px-5'>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 1, 1, 0] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <div style={{ color: "black", textAlign: "center" }}>
+              <h1 className='yeseva mb-1' style={{ opacity: 0.6 }} >
+                {currentSale.offer_desc}
+              </h1>
+              <h6 style={{ opacity: 0.5 }}>
+                {currentSale.offer_title}
+              </h6>
+            </div>
+          </motion.div>
+
+          {/* <div>
+          <img
+            src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745337316/lovepik-mango-splashing-png-image_401631333_wh1200-removebg-preview_heutaw.png"}
+            style={{ maxHeight: 120 }}
+          />
+          </div> */}
+        </div>
+      }
 
       <div id='page-2'>
         <Products />

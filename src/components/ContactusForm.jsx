@@ -68,7 +68,7 @@ const Reviews = () => {
 
                 <div className='my-3'>
                     <h1 className='yeseva text-center' style={{ fontSize: "40px", color: "#DC752A" }}>
-                        Drop Us a Line
+                        Give Us a Review
                     </h1>
                 </div>
 

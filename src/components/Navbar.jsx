@@ -56,8 +56,8 @@ const links = [
 ]
 
 const PopupComponent = ({ formData, handleSubmit, loading }) => {
-  const [selectedState, setSelectedState] = useState('');
-  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedState, setSelectedState] = useState(localStorage.getItem("state" || ""));
+  const [selectedCity, setSelectedCity] = useState(localStorage.getItem("city" || ""));
 
   useEffect(() => {
     // Update parent formData when dropdown values change
@@ -134,6 +134,7 @@ const Navbar = ({ openModel, getProductsData }) => {
 
   const handleSubmit = async () => {
     localStorage.setItem("city", formData.city);
+    localStorage.setItem("state", formData.state);
     getProductsData();
     setopen(false)
   }

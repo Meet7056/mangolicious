@@ -79,7 +79,7 @@ const PopupComponent = ({ formData, handleSubmit, handleInputChange, loading }) 
 
             <div className='py-5'>
                 <img
-                    src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745259830/Mangolicious/hxgmnz3lisszbzpezmrc.jpg"}
+                    src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1746032479/Mangolicious/o6cqolyls1aggvysowfx.jpg"}
                     style={{ minWidth: 300, maxWidth: 300 }}
                 />
             </div>
@@ -111,6 +111,10 @@ const InvoiceBill = ({ formData, handleSubmit, handleInputChange, loading, produ
                     <h5>₹ {totalPrice} </h5>
                 </div>
 
+                <div className='pb-3 d-flex justify-content-center align-items-center border-bottom'>
+                    <h6 className='text-secondary' style={{fontSize: 14}}>Offer will be applied (if available)</h6>
+                </div>
+
 
                 <div className='d-flex justify-content-center mt-4'>
                     <CustomButton loading={loading} icon={rightarrow} onClick={handleSubmit} label="NEXT" />
@@ -119,7 +123,7 @@ const InvoiceBill = ({ formData, handleSubmit, handleInputChange, loading, produ
 
             <div className='py-5'>
                 <img
-                    src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1745259830/Mangolicious/hxgmnz3lisszbzpezmrc.jpg"}
+                    src={"https://res.cloudinary.com/dvazdgyjw/image/upload/v1746032479/Mangolicious/o6cqolyls1aggvysowfx.jpg"}
                     style={{ minWidth: 300, maxWidth: 300 }}
                 />
             </div>

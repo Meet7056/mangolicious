@@ -203,6 +203,28 @@ export const viewProfile = async () => {
     }
 };
 
+export const getCuurrentSaleAllApi = async () => {
+    try {
+        const token = localStorage.getItem("token");
+        const user_id = localStorage.getItem("userid"); // assuming you store it in localStorage
+
+        const response = await axios.get(
+            `${API_START_POINT}/get_active_flash_sales/`,
+            {
+                params: { user_id },
+                headers: {
+                    token: token,
+                },
+            }
+        );
+
+        return response.data;
+    } catch (error) {
+        console.log("API GET error:", error.response?.data?.message || error.message);
+        return { error: error.response?.data || error.message };
+    }
+};
+
 export const updateProfile = async (payload) => {
     try {
         const token = localStorage.getItem("token");
