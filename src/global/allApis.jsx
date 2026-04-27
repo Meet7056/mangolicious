@@ -1,7 +1,7 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-const API_START_POINT = "https://mangoliciousfood.com/api";
+const API_START_POINT = "https://mangoliciousfoods.com/api";
 
 export const registerUser = async (payload) => {
     try {
